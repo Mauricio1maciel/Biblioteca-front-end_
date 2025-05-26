@@ -38,16 +38,16 @@ export default function Menu(){
                             data-bs-toggle="dropdown"
                             aria-expanded="false"
                         >
-                            Cadastro
+                            Listagens
                         </a>
                         <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
                             <li>
-                            <a className="dropdown-item" href="/categorias">
+                            <a className="dropdown-item" href="/listacategoria">
                                 Categoria
                             </a>
                             </li>
                             <li>
-                            <a className="dropdown-item" href="/categoria">
+                            <a className="dropdown-item" href="/cadastrocategoria">
                                 Cadastrar Categoria
                             </a>
                             </li>

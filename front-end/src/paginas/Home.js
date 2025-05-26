@@ -1,8 +1,35 @@
+import axios from "axios";
+import { useState , useEffect } from "react";
+
+
+function formatarData(dataStr) {
+  if (!dataStr || dataStr.toString().length !== 8) return "Data inválida";
+
+  const ano = dataStr.toString().substring(0, 4);
+  const mes = dataStr.toString().substring(4, 6);
+  const dia = dataStr.toString().substring(6, 8);
+
+  return `${dia}/${mes}/${ano}`;
+}
 export default function Home(){
+const [dados, setDados] = useState([]);
+
+  const listar = async () => {
+    let { data } = await axios.get(`http://localhost:4000/livro`);
+    console.log(data);
+    setDados(data);
+  }
+
+  useEffect( ()=>{
+    listar();
+  }, []);
+
+
+  
     return(
         <>
-        <div className="container">
-  <div className="row justify-content-md-center">
+        
+  {/* <div className="row justify-content-md-center">
     <div className="col-md-auto">
       <button type="button" className="btn btn-primary btn-lg">
         Large button
@@ -17,266 +44,59 @@ export default function Home(){
         Large button
       </button>
     </div>
-  </div>
+  </div> */}
 
   <br />
+
+
   
-  <div className="row">
-    <div className="col col-md-4 col-lg-4">
-      <div className="card mb-3" style={{ maxWidth: 540 }}>
-        <div className="row g-0">
-          <div className="col-md-4">
-            <img
-              src="./assets/book.jpg"
-              className="img-fluid rounded-start"
-              alt="..."
-            />
-          </div>
-          <div className="col-md-8">
-            <div className="card-body">
-              <h5 className="card-title">Titulo</h5>
-              <p className="card-text">Edit........</p>
-              <p className="card-text">
-                <small className="text-muted">??? Pages</small>
-              </p>
-              <p className="card-text">
-                <small className="text-muted">??? Year</small>
-              </p>
-              <a href="#" className="btn btn-primary">
-                Go somewhere
-              </a>
-            </div>
-          </div>
-        </div>
+<div className="row">
+  { dados.map( (d,i)=>(
+<div className="col-12 col-md-6 col-lg-4 mb-4">
+  <div className="card h-100 shadow-sm">
+    <div className="row g-0 h-100">
+      <div className="col-6">
+        <img
+          src={d.foto}
+          className="img-fluid h-100 w-100 rounded-start"
+          alt={d.titulo}
+          style={{ objectFit: 'cover' }}
+        />
       </div>
-    </div>
-    <div className="col col-md-4 col-lg-4">
-      <div className="card mb-3" style={{ maxWidth: 540 }}>
-        <div className="row g-0">
-          <div className="col-md-4">
-            <img
-              src="./assets/book.jpg"
-              className="img-fluid rounded-start"
-              alt="..."
-            />
-          </div>
-          <div className="col-md-8">
-            <div className="card-body">
-              <h5 className="card-title">Titulo</h5>
-              <p className="card-text">Edit........</p>
-              <p className="card-text">
-                <small className="text-muted">??? Pages</small>
-              </p>
-              <p className="card-text">
-                <small className="text-muted">??? Year</small>
-              </p>
-              <a href="#" className="btn btn-primary">
-                Go somewhere
-              </a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div className="col col-md-4 col-lg-4">
-      <div className="card mb-3" style={{ maxWidth: 540 }}>
-        <div className="row g-0">
-          <div className="col-md-4">
-            <img
-              src="./assets/book.jpg"
-              className="img-fluid rounded-start"
-              alt="..."
-            />
-          </div>
-          <div className="col-md-8">
-            <div className="card-body">
-              <h5 className="card-title">Titulo</h5>
-              <p className="card-text">Edit........</p>
-              <p className="card-text">
-                <small className="text-muted">??? Pages</small>
-              </p>
-              <p className="card-text">
-                <small className="text-muted">??? Year</small>
-              </p>
-              <a href="#" className="btn btn-primary">
-                Go somewhere
-              </a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div className="col col-md-4 col-lg-4">
-      <div className="card mb-3" style={{ maxWidth: 540 }}>
-        <div className="row g-0">
-          <div className="col-md-4">
-            <img
-              src="./assets/book.jpg"
-              className="img-fluid rounded-start"
-              alt="..."
-            />
-          </div>
-          <div className="col-md-8">
-            <div className="card-body">
-              <h5 className="card-title">Titulo</h5>
-              <p className="card-text">Edit........</p>
-              <p className="card-text">
-                <small className="text-muted">??? Pages</small>
-              </p>
-              <p className="card-text">
-                <small className="text-muted">??? Year</small>
-              </p>
-              <a href="#" className="btn btn-primary">
-                Go somewhere
-              </a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div className="col col-md-4 col-lg-4">
-      <div className="card mb-3" style={{ maxWidth: 540 }}>
-        <div className="row g-0">
-          <div className="col-md-4">
-            <img
-              src="./assets/book.jpg"
-              className="img-fluid rounded-start"
-              alt="..."
-            />
-          </div>
-          <div className="col-md-8">
-            <div className="card-body">
-              <h5 className="card-title">Titulo</h5>
-              <p className="card-text">Edit........</p>
-              <p className="card-text">
-                <small className="text-muted">??? Pages</small>
-              </p>
-              <p className="card-text">
-                <small className="text-muted">??? Year</small>
-              </p>
-              <a href="#" className="btn btn-primary">
-                Go somewhere
-              </a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div className="col col-md-4 col-lg-4">
-      <div className="card mb-3" style={{ maxWidth: 540 }}>
-        <div className="row g-0">
-          <div className="col-md-4">
-            <img
-              src="./assets/book.jpg"
-              className="img-fluid rounded-start"
-              alt="..."
-            />
-          </div>
-          <div className="col-md-8">
-            <div className="card-body">
-              <h5 className="card-title">Titulo</h5>
-              <p className="card-text">Edit........</p>
-              <p className="card-text">
-                <small className="text-muted">??? Pages</small>
-              </p>
-              <p className="card-text">
-                <small className="text-muted">??? Year</small>
-              </p>
-              <a href="#" className="btn btn-primary">
-                Go somewhere
-              </a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div className="col col-md-4 col-lg-4">
-      <div className="card mb-3" style={{ maxWidth: 540 }}>
-        <div className="row g-0">
-          <div className="col-md-4">
-            <img
-              src="./assets/book.jpg"
-              className="img-fluid rounded-start"
-              alt="..."
-            />
-          </div>
-          <div className="col-md-8">
-            <div className="card-body">
-              <h5 className="card-title">Titulo</h5>
-              <p className="card-text">Edit........</p>
-              <p className="card-text">
-                <small className="text-muted">??? Pages</small>
-              </p>
-              <p className="card-text">
-                <small className="text-muted">??? Year</small>
-              </p>
-              <a href="#" className="btn btn-primary">
-                Go somewhere
-              </a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div className="col col-md-4 col-lg-4">
-      <div className="card mb-3" style={{ maxWidth: 540 }}>
-        <div className="row g-0">
-          <div className="col-md-4">
-            <img
-              src="./assets/book.jpg"
-              className="img-fluid rounded-start"
-              alt="..."
-            />
-          </div>
-          <div className="col-md-8">
-            <div className="card-body">
-              <h5 className="card-title">Titulo</h5>
-              <p className="card-text">Edit........</p>
-              <p className="card-text">
-                <small className="text-muted">??? Pages</small>
-              </p>
-              <p className="card-text">
-                <small className="text-muted">??? Year</small>
-              </p>
-              <a href="#" className="btn btn-primary">
-                Go somewhere
-              </a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div className="col col-md-4 col-lg-4">
-      <div className="card mb-3" style={{ maxWidth: 540 }}>
-        <div className="row g-0">
-          <div className="col-md-4">
-            <img
-              src="./assets/book.jpg"
-              className="img-fluid rounded-start"
-              alt="..."
-            />
-          </div>
-          <div className="col-md-8">
-            <div className="card-body">
-              <h5 className="card-title">Titulo</h5>
-              <p className="card-text">Edit........</p>
-              <p className="card-text">
-                <small className="text-muted">??? Pages</small>
-              </p>
-              <p className="card-text">
-                <small className="text-muted">??? Year</small>
-              </p>
-              <a href="#" className="btn btn-primary">
-                Go somewhere
-              </a>
-            </div>
+      <div className="col-6">
+        <div className="card-body d-flex flex-column h-100">
+          <h5 className="card-title">{d.titulo}</h5>
+          <p className="card-text mb-1">Edição {d.edicao}</p>
+          <p className="card-text mb-1">
+            <small className="text-muted">{d.paginas} Páginas</small>
+          </p>
+          <p className="card-text mb-1">
+            <small className="text-muted">Ano publicação: {formatarData(d.publicacao)}</small>
+          </p>
+          <p className="card-text mb-1">
+            <strong>Condição física:</strong> {d.condicaofisica}
+          </p>
+          <p className="card-text mb-1">
+            <strong>Localização:</strong> {d.localizacao}
+          </p>
+          <p className={`card-text ${d.emprestado ? 'text-danger' : 'text-success'} fw-semibold`}>
+            {d.emprestado ? 'Livro emprestado' : 'Livro disponível'}
+          </p>
+          <p className="card-text small text-secondary flex-grow-1">
+            {d.resumo}
+          </p>
+          <div className="mt-2">
+            <a href="#" className="btn btn-primary btn-sm w-100">Alterar</a>
           </div>
         </div>
       </div>
     </div>
   </div>
-  
 </div>
+
+) )}
+  </div> 
+
 
         </>
     );

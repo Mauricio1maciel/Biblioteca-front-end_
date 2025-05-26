@@ -1,11 +1,27 @@
 import Titulolista from "../componentes/TituloLista";
+import axios from "axios";
+import { useState , useEffect } from "react";
 
 export default function ListaCategoria(){
+  //Declarando uma variável usuState 
+  const [dados, setDados] = useState([]);
+
+  const listar = async () => {
+    let { data } = await axios.get(`http://localhost:4000/categoria`);
+    console.log(data);
+    setDados(data);
+  }
+
+  useEffect( ()=>{
+    listar();
+  }, []);
+
+
     return(
         <>
          <Titulolista titulo = "Categorias"
         descricao = "Gerencia aqui as categorias dos livros da biblioteca"
-        rota = "/categoria" />
+        rota = "/cadastrocategoria" />
 
 
         <div className="row">
@@ -14,29 +30,22 @@ export default function ListaCategoria(){
       <thead>
         <tr>
           <th scope="col">#</th>
-          <th scope="col">First</th>
-          <th scope="col">Last</th>
-          <th scope="col">Handle</th>
+          <th scope="col">Código</th>
+          <th scope="col">Categoria</th>
         </tr>
       </thead>
       <tbody>
-        <tr>
-          <th scope="row">1</th>
-          <td>Mark</td>
-          <td>Otto</td>
-          <td>@mdo</td>
+        { dados.map( (d, i)=>(
+          <tr>
+            <td>
+          <a className="btn btn-primary"
+             href={`/cadastrocategoria/${d.idcategoria}`} >Alterar</a>
+          </td>
+          <td>{d.idcategoria}</td>
+          <td>{d.nomecategoria}</td>
         </tr>
-        <tr>
-          <th scope="row">2</th>
-          <td>Jacob</td>
-          <td>Thornton</td>
-          <td>@fat</td>
-        </tr>
-        <tr>
-          <th scope="row">3</th>
-          <td colSpan={2}>Larry the Bird</td>
-          <td>@twitter</td>
-        </tr>
+        )  )}
+        
       </tbody>
     </table>
   </div>
