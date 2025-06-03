@@ -47,16 +47,32 @@ export default function Menu(){
                             </a>
                             </li>
                             <li>
-                            <a className="dropdown-item" href="/cadastrocategoria">
-                                Cadastrar Categoria
+                            <a className="dropdown-item" href="/listaautor">
+                                Autores
                             </a>
                             </li>
                             <li>
+                            <a className="dropdown-item" href="/listaeditora">
+                                Editora
+                            </a>
+                            </li>
+                            <li>
+                                <li>
+                            <a className="dropdown-item" href="/listalivro">
+                                Livro
+                            </a>
+                            </li>
+                            <li></li>
                             <hr className="dropdown-divider" />
                             </li>
                             <li>
-                            <a className="dropdown-item" href="#">
-                                Something else here
+                            <a className="dropdown-item" href="/listausuario">
+                                Usuarios
+                            </a>
+                            </li>
+                            <li>
+                            <a className="dropdown-item" href="/listafuncionario">
+                                Funcionarios
                             </a>
                             </li>
                         </ul>

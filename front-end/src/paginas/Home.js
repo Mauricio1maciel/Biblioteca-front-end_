@@ -1,3 +1,4 @@
+import Titulolista from "../componentes/TituloLista";
 import axios from "axios";
 import { useState , useEffect } from "react";
 
@@ -28,8 +29,8 @@ const [dados, setDados] = useState([]);
   
     return(
         <>
-        
-  {/* <div className="row justify-content-md-center">
+         <br />
+   <div className="row justify-content-md-center">
     <div className="col-md-auto">
       <button type="button" className="btn btn-primary btn-lg">
         Large button
@@ -44,7 +45,7 @@ const [dados, setDados] = useState([]);
         Large button
       </button>
     </div>
-  </div> */}
+  </div> 
 
   <br />
 
@@ -86,7 +87,7 @@ const [dados, setDados] = useState([]);
             {d.resumo}
           </p>
           <div className="mt-2">
-            <a href="#" className="btn btn-primary btn-sm w-100">Alterar</a>
+            <a href='*' className="btn btn-primary btn-sm w-100">Emprestimo</a>
           </div>
         </div>
       </div>

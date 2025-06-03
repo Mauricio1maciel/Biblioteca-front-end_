@@ -8,7 +8,7 @@ export default function ListaCategoria(){
   const [dados, setDados] = useState([]);
 
   const listar = async () => {
-    let { data } = await axios.get(`http://localhost:4000/usuario`);
+    let { data } = await axios.get(`http://localhost:4000/funcionario`);
     console.log(data);
     setDados(data);
   }
@@ -20,9 +20,9 @@ export default function ListaCategoria(){
 
     return(
         <>
-         <Titulolista titulo = "Usuario"
-        descricao = "Gerencia aqui os Usuarios da biblioteca"
-        rota = "/cadastrousuario" />
+         <Titulolista titulo = "Funcionario"
+        descricao = "Gerencia aqui os Funcionarios da biblioteca"
+        rota = "/cadastrofuncionario" />
 
 
         <div className="row">
@@ -37,6 +37,8 @@ export default function ListaCategoria(){
           <th scope="col">Email</th>
           <th scope="col">Telefone</th>
           <th scope="col">Nascimento</th>
+          <th scope="col">Salario</th>
+          <th scope="col">Contratação</th>
         </tr>
       </thead>
       <tbody>
@@ -44,14 +46,16 @@ export default function ListaCategoria(){
           <tr>
             <td>
           <a className="btn btn-primary"
-             href={`/cadastrousuario/${d.idusuario}`} >Alterar</a>
+             href={`/cadastrofuncionario/${d.idfuncionario}`} >Alterar</a>
           </td>
-          <td>{d.idusuario}</td>
-          <td>{d.nome}</td>
+          <td>{d.idfuncionario}</td>
+          <td>{d.nomefuncionario}</td>
           <td>{d.cpf}</td>
           <td>{d.email}</td>
-          <td>{d.telafone}</td>
+          <td>{d.telefone}</td>
           <td>{d.nascimento}</td>
+          <td>{d.salario}</td>
+          <td>{d.contratacao}</td>
         </tr>
         )  )}
         

@@ -1,14 +1,13 @@
-//Questão 3 Requisito funcional - Usuários
 import Titulolista from "../componentes/TituloLista";
 import axios from "axios";
 import { useState , useEffect } from "react";
 
-export default function ListaCategoria(){
+export default function ListaAutores(){
   //Declarando uma variável usuState 
   const [dados, setDados] = useState([]);
 
   const listar = async () => {
-    let { data } = await axios.get(`http://localhost:4000/usuario`);
+    let { data } = await axios.get(`http://localhost:4000/autor`);
     console.log(data);
     setDados(data);
   }
@@ -20,9 +19,9 @@ export default function ListaCategoria(){
 
     return(
         <>
-         <Titulolista titulo = "Usuario"
-        descricao = "Gerencia aqui os Usuarios da biblioteca"
-        rota = "/cadastrousuario" />
+         <Titulolista titulo = "Autores"
+        descricao = "Gerencia aqui as autores dos livros da biblioteca"
+        rota = "/cadastroautor" />
 
 
         <div className="row">
@@ -31,11 +30,9 @@ export default function ListaCategoria(){
       <thead>
         <tr>
           <th scope="col">#</th>
+          <th scope="col">Foto</th>
           <th scope="col">Código</th>
           <th scope="col">Nome</th>
-          <th scope="col">CPF</th>
-          <th scope="col">Email</th>
-          <th scope="col">Telefone</th>
           <th scope="col">Nascimento</th>
         </tr>
       </thead>
@@ -44,13 +41,14 @@ export default function ListaCategoria(){
           <tr>
             <td>
           <a className="btn btn-primary"
-             href={`/cadastrousuario/${d.idusuario}`} >Alterar</a>
+             href={`/cadastroautor/${d.idautor}`} >Alterar</a>
           </td>
-          <td>{d.idusuario}</td>
-          <td>{d.nome}</td>
-          <td>{d.cpf}</td>
-          <td>{d.email}</td>
-          <td>{d.telafone}</td>
+          <td><img className="img-thumbnail"
+              src={d.foto}
+              style={{width:'80px'}}
+          /></td>
+          <td>{d.idautor}</td>
+          <td>{d.nomeautor}</td>
           <td>{d.nascimento}</td>
         </tr>
         )  )}
