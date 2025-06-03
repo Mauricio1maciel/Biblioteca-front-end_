@@ -87,7 +87,7 @@ const [dados, setDados] = useState([]);
             {d.resumo}
           </p>
           <div className="mt-2">
-            <a href='*' className="btn btn-primary btn-sm w-100">Emprestimo</a>
+            <a href={`/emprestimo/${d.idlivro}`} className="btn btn-primary btn-sm w-100">Emprestimo</a>
           </div>
         </div>
       </div>
