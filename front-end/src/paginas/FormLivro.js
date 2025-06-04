@@ -25,7 +25,7 @@ export default function FormAutor(){
     const [categorias, setCategorias] = useState([]);
 
     const voltar = ()=>{
-        navegacao('/');
+        navegacao('/listalivro');
     };
 
     const selecionar = async () => {
